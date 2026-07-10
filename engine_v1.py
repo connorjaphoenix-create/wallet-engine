@@ -1,4 +1,6 @@
 import os
+print("DEBUG: starting engine_v1 import...")
+
 import time
 from typing import List, Dict, Any
 from datetime import datetime, timezone, timedelta
@@ -7,11 +9,16 @@ import requests
 from dotenv import load_dotenv
 from supabase import create_client, Client
 
-# Load environment variables from .env
+print("DEBUG: imported libraries, now loading env...")
+
 load_dotenv()
 
-SUPABASE_URL = os.environ["SUPABASE_URL"]
-SUPABASE_KEY = os.environ["SUPABASE_SERVICE_KEY"]
+print("DEBUG: after load_dotenv")
+
+SUPABASE_URL = os.environ.get("SUPABASE_URL")
+SUPABASE_KEY = os.environ.get("SUPABASE_SERVICE_KEY")
+print("DEBUG: SUPABASE_URL:", SUPABASE_URL)
+print("DEBUG: SUPABASE_KEY is set:", SUPABASE_KEY is not None)
 POLY_TRADES_ENDPOINT = os.environ.get("POLYMARKET_TRADES_ENDPOINT", "https://data-api.polymarket.com/trades")
 TRACKED_WALLETS = [w.strip() for w in os.environ.get("TRACKED_WALLETS", "").split(",") if w.strip()]
 
