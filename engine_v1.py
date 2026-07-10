@@ -188,15 +188,10 @@ def create_signals_from_recent_trades():
 
 
 def main():
-    while True:
-        try:
-            print("\n===== Engine tick =====")
-            sync_trades_once()
-            create_signals_from_recent_trades()
-        except Exception as e:
-            print(f"Top-level error: {e}")
-        # Sleep 60 seconds before next run
-        time.sleep(60)
+    print("DEBUG: entering main()")
+    sync_trades_once()
+    create_signals_from_recent_trades()
+    print("DEBUG: finished one-shot run, exiting.")
 
 
 if __name__ == "__main__":
